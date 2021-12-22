@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+
+<head>
+
+<META NAME="GENERATOR" CONTENT="pythondoc 0.6 (Mon Dec 11 15:50:05 2000)">
+
+<link rel="stylesheet" href="pythondoc.css" type="text/css">
+
+<title>Class IRC</title>
+</head>
+
+<body>
+<P><A HREF="index.html">Table of contents</A> <A HREF="indices.html">Index</A></P>
+
+
+<H1 CLASS="ClassName">class IRC - Class that handles one or several IRC server connections.</H1>
+<P CLASS="DeclaredIn">Declared in module <A HREF="irclib.html">irclib</A></P>
+
+
+
+<H2>Synopsis</H2>
+<PRE CLASS="ClassDeclaration">
+<SPAN CLASS="PyKeyword">class</SPAN> <SPAN CLASS="ClassName">IRC</SPAN>:
+    <A CLASS="DocLink" HREF="#X__init__"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">__init__</SPAN></A>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">fn_to_add_socket=None</SPAN>, <SPAN CLASS="Argument">fn_to_remove_socket=None</SPAN>, <SPAN CLASS="Argument">fn_to_add_timeout=None</SPAN>)<SPAN CLASS="OneLiner"> # Constructor for IRC objects.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">_handle_event</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">connection</SPAN>, <SPAN CLASS="Argument">event</SPAN>)<SPAN CLASS="OneLiner"> # [Internal]</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">_remove_connection</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">connection</SPAN>)<SPAN CLASS="OneLiner"> # [Internal]</SPAN>
+    <A CLASS="DocLink" HREF="#add_global_handler"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">add_global_handler</SPAN></A>(<SPAN CLASS="Argument">self</SPAN>, <A HREF="#irclib.IRC.add_global_handlerevent"><SPAN CLASS="Argument">event</SPAN></A>, <A HREF="#irclib.IRC.add_global_handlerhandler"><SPAN CLASS="Argument">handler</SPAN></A>, <A HREF="#irclib.IRC.add_global_handlerpriority0"><SPAN CLASS="Argument">priority=0</SPAN></A>)<SPAN CLASS="OneLiner"> # Adds a global handler function for a specific event type.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">disconnect_all</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">message=''</SPAN>)<SPAN CLASS="OneLiner"> # Disconnects all connections.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">execute_at</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <A HREF="#irclib.IRC.execute_atat"><SPAN CLASS="Argument">at</SPAN></A>, <A HREF="#irclib.IRC.execute_atfunction"><SPAN CLASS="Argument">function</SPAN></A>, <A HREF="#irclib.IRC.execute_atarguments()"><SPAN CLASS="Argument">arguments=()</SPAN></A>)<SPAN CLASS="OneLiner"> # Execute a function at a specified time.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">execute_delayed</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <A HREF="#irclib.IRC.execute_delayeddelay"><SPAN CLASS="Argument">delay</SPAN></A>, <A HREF="#irclib.IRC.execute_delayedfunction"><SPAN CLASS="Argument">function</SPAN></A>, <A HREF="#irclib.IRC.execute_delayedarguments()"><SPAN CLASS="Argument">arguments=()</SPAN></A>)<SPAN CLASS="OneLiner"> # Execute a function after a specified time.</SPAN>
+    <A CLASS="DocLink" HREF="#process_data"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">process_data</SPAN></A>(<SPAN CLASS="Argument">self</SPAN>, <A HREF="#irclib.IRC.process_datasockets"><SPAN CLASS="Argument">sockets</SPAN></A>)<SPAN CLASS="OneLiner"> # Called when there is more data to read on connection sockets.</SPAN>
+    <A CLASS="DocLink" HREF="#process_forever"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">process_forever</SPAN></A>(<SPAN CLASS="Argument">self</SPAN>, <A HREF="#irclib.IRC.process_forevertimeout0.2"><SPAN CLASS="Argument">timeout=0.2</SPAN></A>)<SPAN CLASS="OneLiner"> # Run an infinite loop, processing data from connections.</SPAN>
+    <A CLASS="DocLink" HREF="#process_once"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">process_once</SPAN></A>(<SPAN CLASS="Argument">self</SPAN>, <A HREF="#irclib.IRC.process_oncetimeout0"><SPAN CLASS="Argument">timeout=0</SPAN></A>)<SPAN CLASS="OneLiner"> # Process data from connections once.</SPAN>
+    <A CLASS="DocLink" HREF="#process_timeout"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">process_timeout</SPAN></A>(<SPAN CLASS="Argument">self</SPAN>)<SPAN CLASS="OneLiner"> # Called when a timeout notification is due.</SPAN>
+    <A CLASS="DocLink" HREF="#remove_global_handler"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">remove_global_handler</SPAN></A>(<SPAN CLASS="Argument">self</SPAN>, <A HREF="#irclib.IRC.remove_global_handlerevent"><SPAN CLASS="Argument">event</SPAN></A>, <A HREF="#irclib.IRC.remove_global_handlerhandler"><SPAN CLASS="Argument">handler</SPAN></A>)<SPAN CLASS="OneLiner"> # Removes a global handler function.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">server</SPAN>(<SPAN CLASS="Argument">self</SPAN>)<SPAN CLASS="OneLiner"> # Creates and returns a ServerConnection object.</SPAN>
+
+</PRE><H2>Description</H2><P>
+When an IRC object has been instantiated, it can be used to create
+Connection objects that represent the IRC connections.  The
+responsibility of the IRC object is to provide an event-driven
+framework for the connections and to keep the connections alive.
+It runs a select loop to poll each connection's TCP socket and
+hands over the sockets with incoming data for processing by the
+corresponding connection.</P>
+<P>
+The methods of most interest for an IRC client writer are server,
+add_global_handler, remove_global_handler, execute_at,
+execute_delayed, process_once and process_forever.</P>
+
+<H3>Here is an example:</H3>
+<PRE CLASS="Example">
+    irc = irclib.IRC()
+    server = irc.server()
+    server.connect("irc.some.where", 6667, "my_nickname")
+    server.privmsg("a_nickname", "Hi there!")
+    server.process_forever()</PRE>
+<P>
+This will connect to the IRC server irc.some.where on port 6667
+using the nickname my_nickname and send the message "Hi there!"
+to the nickname a_nickname.
+</P>
+<H2 ID="__init__" CLASS="Method">__init__(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">fn_to_add_socket=None</SPAN>, <SPAN CLASS="Argument">fn_to_remove_socket=None</SPAN>, <SPAN CLASS="Argument">fn_to_add_timeout=None</SPAN>)</H2>
+<P>Constructor for IRC objects.</P>
+
+<P>
+Optional arguments are fn_to_add_socket, fn_to_remove_socket
+and fn_to_add_timeout.  The first two specify functions that
+will be called with a socket object as argument when the IRC
+object wants to be notified (or stop being notified) of data
+coming on a new socket.  When new data arrives, the method
+process_data should be called.  Similarly, fn_to_add_timeout
+is called with a number of seconds (a floating point number)
+as first argument when the IRC object wants to receive a
+notification (by calling the process_timeout method).  So, if
+e.g. the argument is 42.17, the object wants the
+process_timeout method to be called after 42 seconds and 170
+milliseconds.</P>
+<P>
+The three arguments mainly exist to be able to use an external
+main loop (for example Tkinter's or PyGTK's main app loop)
+instead of calling the process_forever method.</P>
+<P>
+An alternative is to just call ServerConnection.process_once()
+once in a while.
+</P>
+<H2 ID="add_global_handler" CLASS="Method">add_global_handler(<SPAN CLASS="Argument">self</SPAN>, <A HREF="#irclib.IRC.add_global_handlerevent"><SPAN CLASS="Argument">event</SPAN></A>, <A HREF="#irclib.IRC.add_global_handlerhandler"><SPAN CLASS="Argument">handler</SPAN></A>, <A HREF="#irclib.IRC.add_global_handlerpriority0"><SPAN CLASS="Argument">priority=0</SPAN></A>)</H2>
+<P>Adds a global handler function for a specific event type.</P>
+
+<DL CLASS="Arguments">
+  <DT CLASS="Argument" ID="irclib.IRC.add_global_handlerevent"><SPAN CLASS="Argument">event</SPAN></DT><DD CLASS="Argument">Event type (a string).  Check the values of the
+    numeric_events dictionary in irclib.py for possible event
+    types.</DD>
+<DT CLASS="Argument" ID="irclib.IRC.add_global_handlerhandler"><SPAN CLASS="Argument">handler</SPAN></DT><DD CLASS="Argument">Callback function.</DD>
+<DT CLASS="Argument" ID="irclib.IRC.add_global_handlerpriority0"><SPAN CLASS="Argument">priority=0</SPAN></DT><DD CLASS="Argument">A number (the lower number, the higher priority).</DD>
+
+</DL>
+<P>
+The handler function is called whenever the specified event is
+triggered in any of the connections.  See documentation for
+the Event class.</P>
+<P>
+The handler functions are called in priority order (lowest
+number is highest priority).  If a handler function returns
+"NO MORE", no more handlers will be called.
+</P>
+<H2 ID="process_data" CLASS="Method">process_data(<SPAN CLASS="Argument">self</SPAN>, <A HREF="#irclib.IRC.process_datasockets"><SPAN CLASS="Argument">sockets</SPAN></A>)</H2>
+<P>Called when there is more data to read on connection sockets.</P>
+
+<DL CLASS="Arguments">
+  <DT CLASS="Argument" ID="irclib.IRC.process_datasockets"><SPAN CLASS="Argument">sockets</SPAN></DT><DD CLASS="Argument">A list of socket objects.</DD>
+
+</DL>
+<P>
+See documentation for IRC.__init__.
+</P>
+<H2 ID="process_forever" CLASS="Method">process_forever(<SPAN CLASS="Argument">self</SPAN>, <A HREF="#irclib.IRC.process_forevertimeout0.2"><SPAN CLASS="Argument">timeout=0.2</SPAN></A>)</H2>
+<P>Run an infinite loop, processing data from connections.</P>
+
+<DL CLASS="Arguments">
+  <DT CLASS="Argument" ID="irclib.IRC.process_forevertimeout0.2"><SPAN CLASS="Argument">timeout=0.2</SPAN></DT><DD CLASS="Argument">Parameter to pass to process_once.
+</DD>
+
+</DL>
+<P>
+This method repeatedly calls process_once.</P>
+<H2 ID="process_once" CLASS="Method">process_once(<SPAN CLASS="Argument">self</SPAN>, <A HREF="#irclib.IRC.process_oncetimeout0"><SPAN CLASS="Argument">timeout=0</SPAN></A>)</H2>
+<P>Process data from connections once.</P>
+
+<DL CLASS="Arguments">
+  <DT CLASS="Argument" ID="irclib.IRC.process_oncetimeout0"><SPAN CLASS="Argument">timeout=0</SPAN></DT><DD CLASS="Argument">How long the select() call should wait if no
+               data is available.</DD>
+
+</DL>
+<P>
+This method should be called periodically to check and process
+incoming data, if there are any.  If that seems boring, look
+at the process_forever method.
+</P>
+<H2 ID="process_timeout" CLASS="Method">process_timeout(<SPAN CLASS="Argument">self</SPAN>)</H2>
+<P>Called when a timeout notification is due.</P>
+
+<P>
+See documentation for IRC.__init__.
+</P>
+<H2 ID="remove_global_handler" CLASS="Method">remove_global_handler(<SPAN CLASS="Argument">self</SPAN>, <A HREF="#irclib.IRC.remove_global_handlerevent"><SPAN CLASS="Argument">event</SPAN></A>, <A HREF="#irclib.IRC.remove_global_handlerhandler"><SPAN CLASS="Argument">handler</SPAN></A>)</H2>
+<P>Removes a global handler function.</P>
+
+<DL CLASS="Arguments">
+  <DT CLASS="Argument" ID="irclib.IRC.remove_global_handlerevent"><SPAN CLASS="Argument">event</SPAN></DT><DD CLASS="Argument">Event type (a string).</DD>
+<DT CLASS="Argument" ID="irclib.IRC.remove_global_handlerhandler"><SPAN CLASS="Argument">handler</SPAN></DT><DD CLASS="Argument">Callback function.</DD>
+
+</DL>
+<P>
+Returns 1 on success, otherwise 0.
+</P>
+
+<HR>
+<TABLE ALIGN="LEFT">
+<TR><TD>
+  <A HREF="http://validator.w3.org/check/referer" TARGET="validate">
+    <IMG BORDER=0 SRC="http://validator.w3.org/images/vh40.gif"
+     ALT="Valid HTML 4.0!" HEIGHT=31 WIDTH=88></A>
+  <A HREF="http://www.w3.org/Style/CSS/Buttons">
+    <IMG ALT="Made with CSS" BORDER=0 WIDTH=88 HEIGHT=31 
+     SRC="http://www.w3.org/Style/CSS/Buttons/mwcos"></A>
+
+</TD>
+<TD STYLE="padding-left: 10">
+  <SPAN CLASS="AUTHOR"></SPAN><BR>
+  <SPAN CLASS="VERSION"></SPAN>
+</TD>
+</TABLE>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
++-----------------------------------------------------------------------------+
+|benzo, a modular python irc blabberbot                    8/28/2001          |
++-----------------------------------------------------------------------------+
+Benzo is a blabberbot written in python.  His means of generating text is a 
+Markov Chain- an algorithm that takes english text as input, and generates 
+output (when addressed) based on statistics gathered from the input text.
+At least thats what its used for here.
+
+Here's where I got the basic implementation:
+
+http://thinkware.se/cgi-bin/thinki.cgi/MarkovChain
+
+All I've done is add persistence and slap a silly IRC bot on the top of it. 
+
+Follow the directions in INSTALL to set up the bot for the first time. 
+
+A few notes and caveats regarding pre 1.0 versions:
+
+1) The implementation of persistence is quite sloppy- the entire brain is 
+   loaded into memory on startup and flushed to disk at set intervals - 
+   which amounts to an eventuallly large memory footprint and a sizeable CPU 
+   hit as the brain is deserialized/serialized.  Future versions will be 
+   DBM/SQL based, and not have this limitation.
+
+2) The module interface is not cleanly defined yet- so expect cusomizations 
+   made now to break in future versions.
+
+3) Ditto for the config file.
+
+4) Ditto for the User DB.
+
+If all that hasn't discouraged you, set the bot loose on your favorite IRC
+channel.  Let him sit and learn for awhile before announcing his presence, 
+or else he'll just repeat stuff. 
+
+Please send any comments to sincere2001@users.sourceforge.net
+

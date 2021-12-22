@@ -1,0 +1,26 @@
+Quick and Dirty install instructions:
+
+1)  Make a brain for your bot by running makebrain.py
+2)  Edit Config.py and set variables accordingly
+3)  Run benzo.py to start the bot
+4)  When the bot joins IRC, message it immediately as follows:
+
+/msg <botname> hello
+
+The bot should respond, indicating that it has recognized you as its owner. 
+From this point on, you will have access to the bots commands (which are
+few at this point).
+
+All commands are issued as follows:
+
+/msg <botname> password command arguments
+
+where 'password' is the password you entered in Config.py
+
+COMMANDS
+--------
+die : sign off and exit cleanly.  
+adduser <nick> <flags> <userhost> : 'o' is op, 'm' master, 'f' friend, 'e' enemy
+opme channel: get ops from the bot
+
+thats it! sucks, doesnt it?

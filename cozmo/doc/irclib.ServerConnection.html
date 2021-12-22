@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+
+<head>
+
+<META NAME="GENERATOR" CONTENT="pythondoc 0.6 (Mon Dec 11 15:50:05 2000)">
+
+<link rel="stylesheet" href="pythondoc.css" type="text/css">
+
+<title>Class ServerConnection</title>
+</head>
+
+<body>
+<P><A HREF="index.html">Table of contents</A> <A HREF="indices.html">Index</A></P>
+
+
+<H1 CLASS="ClassName">class ServerConnection - This class represents an IRC server connection.</H1>
+<P CLASS="DeclaredIn">Declared in module <A HREF="irclib.html">irclib</A></P>
+
+<H2 CLASS="ClassHierarchy">Inheritance hierarchy:</H2><P CLASS="ClassHierarchy">irclib.ServerConnection<BR>
+&nbsp;&nbsp;<A HREF="irclib.Connection.html">irclib.Connection</A><BR>
+</P>
+
+<H2>Synopsis</H2>
+<PRE CLASS="ClassDeclaration">
+<SPAN CLASS="PyKeyword">class</SPAN> <SPAN CLASS="ClassName">ServerConnection</SPAN>(<A CLASS="DocLink" HREF="irclib.Connection.html">Connection</A>):
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">__init__</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">irclibobj</SPAN>)
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">_get_socket</SPAN>(<SPAN CLASS="Argument">self</SPAN>)<SPAN CLASS="OneLiner"> # [Internal]</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">_handle_event</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">event</SPAN>)<SPAN CLASS="OneLiner"> # [Internal]</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">action</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">target</SPAN>, <SPAN CLASS="Argument">action</SPAN>)<SPAN CLASS="OneLiner"> # Send a CTCP ACTION command.</SPAN>
+    <A CLASS="DocLink" HREF="#add_global_handler"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">add_global_handler</SPAN></A>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">*args</SPAN>)<SPAN CLASS="OneLiner"> # Add global handler.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">admin</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">server=''</SPAN>)<SPAN CLASS="OneLiner"> # Send an ADMIN command.</SPAN>
+    <A CLASS="DocLink" HREF="#close"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">close</SPAN></A>(<SPAN CLASS="Argument">self</SPAN>)<SPAN CLASS="OneLiner"> # Close the connection.</SPAN>
+    <A CLASS="DocLink" HREF="#connect"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">connect</SPAN></A>(<SPAN CLASS="Argument">self</SPAN>, <A HREF="#irclib.ServerConnection.connectserver"><SPAN CLASS="Argument">server</SPAN></A>, <A HREF="#irclib.ServerConnection.connectport"><SPAN CLASS="Argument">port</SPAN></A>, <A HREF="#irclib.ServerConnection.connectnickname"><SPAN CLASS="Argument">nickname</SPAN></A>, <A HREF="#irclib.ServerConnection.connectpasswordNone"><SPAN CLASS="Argument">password=None</SPAN></A>, <A HREF="#irclib.ServerConnection.connectusernameNone"><SPAN CLASS="Argument">username=None</SPAN></A>, <A HREF="#irclib.ServerConnection.connectircnameNone"><SPAN CLASS="Argument">ircname=None</SPAN></A>)<SPAN CLASS="OneLiner"> # Connect/reconnect to a server.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">ctcp</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">ctcptype</SPAN>, <SPAN CLASS="Argument">target</SPAN>, <SPAN CLASS="Argument">parameter=''</SPAN>)<SPAN CLASS="OneLiner"> # Send a CTCP command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">ctcp_reply</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">target</SPAN>, <SPAN CLASS="Argument">parameter</SPAN>)<SPAN CLASS="OneLiner"> # Send a CTCP REPLY command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">disconnect</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <A HREF="#irclib.ServerConnection.disconnectmessage"><SPAN CLASS="Argument">message=''</SPAN></A>)<SPAN CLASS="OneLiner"> # Hang up the connection.</SPAN>
+    <A CLASS="DocLink" HREF="#get_nickname"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">get_nickname</SPAN></A>(<SPAN CLASS="Argument">self</SPAN>)<SPAN CLASS="OneLiner"> # Get the (real) nick name.</SPAN>
+    <A CLASS="DocLink" HREF="#get_server_name"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">get_server_name</SPAN></A>(<SPAN CLASS="Argument">self</SPAN>)<SPAN CLASS="OneLiner"> # Get the (real) server name.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">globops</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">text</SPAN>)<SPAN CLASS="OneLiner"> # Send a GLOBOPS command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">info</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">server=''</SPAN>)<SPAN CLASS="OneLiner"> # Send an INFO command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">invite</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">nick</SPAN>, <SPAN CLASS="Argument">channel</SPAN>)<SPAN CLASS="OneLiner"> # Send an INVITE command.</SPAN>
+    <A CLASS="DocLink" HREF="#is_connected"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">is_connected</SPAN></A>(<SPAN CLASS="Argument">self</SPAN>)<SPAN CLASS="OneLiner"> # Return connection status.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">ison</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <A HREF="#irclib.ServerConnection.isonnicks"><SPAN CLASS="Argument">nicks</SPAN></A>)<SPAN CLASS="OneLiner"> # Send an ISON command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">join</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">channel</SPAN>, <SPAN CLASS="Argument">key=''</SPAN>)<SPAN CLASS="OneLiner"> # Send a JOIN command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">kick</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">channel</SPAN>, <SPAN CLASS="Argument">nick</SPAN>, <SPAN CLASS="Argument">comment=''</SPAN>)<SPAN CLASS="OneLiner"> # Send a KICK command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">links</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">remote_server=''</SPAN>, <SPAN CLASS="Argument">server_mask=''</SPAN>)<SPAN CLASS="OneLiner"> # Send a LINKS command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">list</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">channels=None</SPAN>, <SPAN CLASS="Argument">server=''</SPAN>)<SPAN CLASS="OneLiner"> # Send a LIST command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">lusers</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">server=''</SPAN>)<SPAN CLASS="OneLiner"> # Send a LUSERS command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">mode</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">target</SPAN>, <SPAN CLASS="Argument">command</SPAN>)<SPAN CLASS="OneLiner"> # Send a MODE command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">motd</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">server=''</SPAN>)<SPAN CLASS="OneLiner"> # Send an MOTD command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">names</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">channels=None</SPAN>)<SPAN CLASS="OneLiner"> # Send a NAMES command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">nick</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">newnick</SPAN>)<SPAN CLASS="OneLiner"> # Send a NICK command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">notice</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">target</SPAN>, <SPAN CLASS="Argument">text</SPAN>)<SPAN CLASS="OneLiner"> # Send a NOTICE command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">oper</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">nick</SPAN>, <SPAN CLASS="Argument">password</SPAN>)<SPAN CLASS="OneLiner"> # Send an OPER command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">part</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">channels</SPAN>)<SPAN CLASS="OneLiner"> # Send a PART command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">pass_</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">password</SPAN>)<SPAN CLASS="OneLiner"> # Send a PASS command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">ping</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">target</SPAN>, <SPAN CLASS="Argument">target2=''</SPAN>)<SPAN CLASS="OneLiner"> # Send a PING command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">pong</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">target</SPAN>, <SPAN CLASS="Argument">target2=''</SPAN>)<SPAN CLASS="OneLiner"> # Send a PONG command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">privmsg</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">target</SPAN>, <SPAN CLASS="Argument">text</SPAN>)<SPAN CLASS="OneLiner"> # Send a PRIVMSG command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">privmsg_many</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">targets</SPAN>, <SPAN CLASS="Argument">text</SPAN>)<SPAN CLASS="OneLiner"> # Send a PRIVMSG command to multiple targets.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">process_data</SPAN>(<SPAN CLASS="Argument">self</SPAN>)<SPAN CLASS="OneLiner"> # [Internal]</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">quit</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">message=''</SPAN>)<SPAN CLASS="OneLiner"> # Send a QUIT command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">sconnect</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">target</SPAN>, <SPAN CLASS="Argument">port=''</SPAN>, <SPAN CLASS="Argument">server=''</SPAN>)<SPAN CLASS="OneLiner"> # Send an SCONNECT command.</SPAN>
+    <A CLASS="DocLink" HREF="#send_raw"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">send_raw</SPAN></A>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">string</SPAN>)<SPAN CLASS="OneLiner"> # Send raw string to the server.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">squit</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">server</SPAN>, <SPAN CLASS="Argument">comment=''</SPAN>)<SPAN CLASS="OneLiner"> # Send an SQUIT command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">stats</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">statstype</SPAN>, <SPAN CLASS="Argument">server=''</SPAN>)<SPAN CLASS="OneLiner"> # Send a STATS command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">time</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">server=''</SPAN>)<SPAN CLASS="OneLiner"> # Send a TIME command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">topic</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">channel</SPAN>, <SPAN CLASS="Argument">new_topic=None</SPAN>)<SPAN CLASS="OneLiner"> # Send a TOPIC command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">trace</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">target=''</SPAN>)<SPAN CLASS="OneLiner"> # Send a TRACE command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">user</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">username</SPAN>, <SPAN CLASS="Argument">localhost</SPAN>, <SPAN CLASS="Argument">server</SPAN>, <SPAN CLASS="Argument">ircname</SPAN>)<SPAN CLASS="OneLiner"> # Send a USER command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">userhost</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">nicks</SPAN>)<SPAN CLASS="OneLiner"> # Send a USERHOST command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">users</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">server=''</SPAN>)<SPAN CLASS="OneLiner"> # Send a USERS command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">version</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">server=''</SPAN>)<SPAN CLASS="OneLiner"> # Send a VERSION command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">wallops</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">text</SPAN>)<SPAN CLASS="OneLiner"> # Send a WALLOPS command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">who</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">target=''</SPAN>, <SPAN CLASS="Argument">op=''</SPAN>)<SPAN CLASS="OneLiner"> # Send a WHO command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">whois</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">targets</SPAN>)<SPAN CLASS="OneLiner"> # Send a WHOIS command.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">whowas</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">nick</SPAN>, <SPAN CLASS="Argument">max=None</SPAN>, <SPAN CLASS="Argument">server=''</SPAN>)<SPAN CLASS="OneLiner"> # Send a WHOWAS command.</SPAN>
+
+    <SPAN CLASS="InheritsHead"># Inherited from irclib.Connection</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">__init__</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">irclibobj</SPAN>)
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">_get_socket</SPAN>()
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">execute_at</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">at</SPAN>, <SPAN CLASS="Argument">function</SPAN>, <SPAN CLASS="Argument">arguments=()</SPAN>)
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">execute_delayed</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">delay</SPAN>, <SPAN CLASS="Argument">function</SPAN>, <SPAN CLASS="Argument">arguments=()</SPAN>)
+
+</PRE><H2>Description</H2><P>
+ServerConnection objects are instantiated by calling the server
+method on an IRC object.
+</P>
+<H2 ID="add_global_handler" CLASS="Method">add_global_handler(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">*args</SPAN>)</H2>
+<P>Add global handler.</P>
+
+<P>
+See documentation for IRC.add_global_handler.
+</P>
+<H2 ID="close" CLASS="Method">close(<SPAN CLASS="Argument">self</SPAN>)</H2>
+<P>Close the connection.</P>
+
+<P>
+This method closes the connection permanently; after it has
+been called, the object is unusable.
+</P>
+<H2 ID="connect" CLASS="Method">connect(<SPAN CLASS="Argument">self</SPAN>, <A HREF="#irclib.ServerConnection.connectserver"><SPAN CLASS="Argument">server</SPAN></A>, <A HREF="#irclib.ServerConnection.connectport"><SPAN CLASS="Argument">port</SPAN></A>, <A HREF="#irclib.ServerConnection.connectnickname"><SPAN CLASS="Argument">nickname</SPAN></A>, <A HREF="#irclib.ServerConnection.connectpasswordNone"><SPAN CLASS="Argument">password=None</SPAN></A>, <A HREF="#irclib.ServerConnection.connectusernameNone"><SPAN CLASS="Argument">username=None</SPAN></A>, <A HREF="#irclib.ServerConnection.connectircnameNone"><SPAN CLASS="Argument">ircname=None</SPAN></A>)</H2>
+<P>Connect/reconnect to a server.</P>
+
+<DL CLASS="Arguments">
+  <DT CLASS="Argument" ID="irclib.ServerConnection.connectserver"><SPAN CLASS="Argument">server</SPAN></DT><DD CLASS="Argument">Server name.</DD>
+<DT CLASS="Argument" ID="irclib.ServerConnection.connectport"><SPAN CLASS="Argument">port</SPAN></DT><DD CLASS="Argument">Port number.</DD>
+<DT CLASS="Argument" ID="irclib.ServerConnection.connectnickname"><SPAN CLASS="Argument">nickname</SPAN></DT><DD CLASS="Argument">The nickname.</DD>
+<DT CLASS="Argument" ID="irclib.ServerConnection.connectpasswordNone"><SPAN CLASS="Argument">password=None</SPAN></DT><DD CLASS="Argument">Password (if any).</DD>
+<DT CLASS="Argument" ID="irclib.ServerConnection.connectusernameNone"><SPAN CLASS="Argument">username=None</SPAN></DT><DD CLASS="Argument">The username.</DD>
+<DT CLASS="Argument" ID="irclib.ServerConnection.connectircnameNone"><SPAN CLASS="Argument">ircname=None</SPAN></DT><DD CLASS="Argument">The IRC name.</DD>
+
+</DL>
+<P>
+This function can be called to reconnect a closed connection.</P>
+<P>
+Returns the ServerConnection object.
+</P>
+<H2 ID="get_nickname" CLASS="Method">get_nickname(<SPAN CLASS="Argument">self</SPAN>)</H2>
+<P>Get the (real) nick name.</P>
+
+<P>
+This method returns the (real) nickname.  The library keeps
+track of nick changes, so it might not be the nick name that
+was passed to the connect() method.  </P>
+<H2 ID="get_server_name" CLASS="Method">get_server_name(<SPAN CLASS="Argument">self</SPAN>)</H2>
+<P>Get the (real) server name.</P>
+
+<P>
+This method returns the (real) server name, or, more
+specifically, what the server calls itself.
+</P>
+<H2 ID="is_connected" CLASS="Method">is_connected(<SPAN CLASS="Argument">self</SPAN>)</H2>
+<P>Return connection status.</P>
+
+<P>
+Returns true if connected, otherwise false.
+</P>
+<H2 ID="send_raw" CLASS="Method">send_raw(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">string</SPAN>)</H2>
+<P>Send raw string to the server.</P>
+
+<P>
+The string will be padded with appropriate CR LF.
+</P>
+
+<HR>
+<TABLE ALIGN="LEFT">
+<TR><TD>
+  <A HREF="http://validator.w3.org/check/referer" TARGET="validate">
+    <IMG BORDER=0 SRC="http://validator.w3.org/images/vh40.gif"
+     ALT="Valid HTML 4.0!" HEIGHT=31 WIDTH=88></A>
+  <A HREF="http://www.w3.org/Style/CSS/Buttons">
+    <IMG ALT="Made with CSS" BORDER=0 WIDTH=88 HEIGHT=31 
+     SRC="http://www.w3.org/Style/CSS/Buttons/mwcos"></A>
+
+</TD>
+<TD STYLE="padding-left: 10">
+  <SPAN CLASS="AUTHOR"></SPAN><BR>
+  <SPAN CLASS="VERSION"></SPAN>
+</TD>
+</TABLE>
+
+</body>
+</html>

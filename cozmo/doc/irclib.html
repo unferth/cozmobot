@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+
+<head>
+
+<META NAME="GENERATOR" CONTENT="pythondoc 0.6 (Mon Dec 11 15:50:05 2000)">
+
+<link rel="stylesheet" href="pythondoc.css" type="text/css">
+
+<title>Module irclib</title>
+</head>
+
+<body>
+<P><A HREF="index.html">Table of contents</A> <A HREF="indices.html">Index</A></P>
+
+
+<H1 CLASS="ModuleName">Module irclib</H1>
+<PRE><SPAN CLASS="ClassHead"><A CLASS="DocLink" HREF="irclib.Connection.html"><SPAN CLASS="PyKeyword">class</SPAN> <SPAN CLASS="ClassName">Connection</SPAN></A></SPAN><SPAN CLASS="OneLiner"> # Base class for IRC connections.</SPAN>
+<SPAN CLASS="ClassHead"><A CLASS="DocLink" HREF="irclib.DCCConnection.html"><SPAN CLASS="PyKeyword">class</SPAN> <SPAN CLASS="ClassName">DCCConnection</SPAN></A>(<A CLASS="DocLink" HREF="irclib.Connection.html">Connection</A>)</SPAN><SPAN CLASS="OneLiner"> # Unimplemented.</SPAN>
+<SPAN CLASS="ClassHead"><A CLASS="DocLink" HREF="irclib.Event.html"><SPAN CLASS="PyKeyword">class</SPAN> <SPAN CLASS="ClassName">Event</SPAN></A></SPAN><SPAN CLASS="OneLiner"> # Class representing an IRC event.</SPAN>
+<SPAN CLASS="ClassHead"><A CLASS="DocLink" HREF="irclib.IRC.html"><SPAN CLASS="PyKeyword">class</SPAN> <SPAN CLASS="ClassName">IRC</SPAN></A></SPAN><SPAN CLASS="OneLiner"> # Class that handles one or several IRC server connections.</SPAN>
+<SPAN CLASS="ClassHead"><A CLASS="DocLink" HREF="irclib.IRCError.html"><SPAN CLASS="PyKeyword">class</SPAN> <SPAN CLASS="ClassName">IRCError</SPAN></A>(<A CLASS="DocLink" HREF="exceptions.Exception.html">Exception</A>)</SPAN><SPAN CLASS="OneLiner"> # Represents an IRC exception.</SPAN>
+<SPAN CLASS="ClassHead"><A CLASS="DocLink" HREF="irclib.ServerConnection.html"><SPAN CLASS="PyKeyword">class</SPAN> <SPAN CLASS="ClassName">ServerConnection</SPAN></A>(<A CLASS="DocLink" HREF="irclib.Connection.html">Connection</A>)</SPAN><SPAN CLASS="OneLiner"> # This class represents an IRC server connection.</SPAN>
+<SPAN CLASS="ClassHead"><A CLASS="DocLink" HREF="irclib.ServerConnectionError.html"><SPAN CLASS="PyKeyword">class</SPAN> <SPAN CLASS="ClassName">ServerConnectionError</SPAN></A>(<A CLASS="DocLink" HREF="irclib.IRCError.html">IRCError</A>)</SPAN>
+<SPAN CLASS="ClassHead"><A CLASS="DocLink" HREF="irclib.SimpleIRCClient.html"><SPAN CLASS="PyKeyword">class</SPAN> <SPAN CLASS="ClassName">SimpleIRCClient</SPAN></A></SPAN><SPAN CLASS="OneLiner"> # A simple single-server IRC client class.</SPAN>
+<SPAN CLASS="FunctionHead"><A CLASS="DocLink" HREF="#X_ctcp_dequote"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">_ctcp_dequote</SPAN></A>(<A HREF="#irclib._ctcp_dequotemessage"><SPAN CLASS="Argument">message</SPAN></A>)</SPAN><SPAN CLASS="OneLiner"> # [Internal] Dequote a message according to CTCP specifications.</SPAN>
+<SPAN CLASS="FunctionHead"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">_parse_modes</SPAN>(<SPAN CLASS="Argument">mode_string</SPAN>, <SPAN CLASS="Argument">unary_modes=''</SPAN>)</SPAN><SPAN CLASS="OneLiner"> # [Internal]</SPAN>
+<SPAN CLASS="FunctionHead"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">_ping_ponger</SPAN>(<SPAN CLASS="Argument">connection</SPAN>, <SPAN CLASS="Argument">event</SPAN>)</SPAN><SPAN CLASS="OneLiner"> # [Internal]</SPAN>
+<SPAN CLASS="FunctionHead"><A CLASS="DocLink" HREF="#irc_lower"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">irc_lower</SPAN></A>(<SPAN CLASS="Argument">s</SPAN>)</SPAN><SPAN CLASS="OneLiner"> # Returns a lowercased string.</SPAN>
+<SPAN CLASS="FunctionHead"><A CLASS="DocLink" HREF="#is_channel"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">is_channel</SPAN></A>(<SPAN CLASS="Argument">string</SPAN>)</SPAN><SPAN CLASS="OneLiner"> # Check if a string is a channel name.</SPAN>
+<SPAN CLASS="FunctionHead"><A CLASS="DocLink" HREF="#mask_matches"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">mask_matches</SPAN></A>(<SPAN CLASS="Argument">nick</SPAN>, <SPAN CLASS="Argument">mask</SPAN>)</SPAN><SPAN CLASS="OneLiner"> # Check if a nick matches a mask.</SPAN>
+<SPAN CLASS="FunctionHead"><A CLASS="DocLink" HREF="#nm_to_h"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">nm_to_h</SPAN></A>(<SPAN CLASS="Argument">s</SPAN>)</SPAN><SPAN CLASS="OneLiner"> # Get the host part of a nickmask.</SPAN>
+<SPAN CLASS="FunctionHead"><A CLASS="DocLink" HREF="#nm_to_n"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">nm_to_n</SPAN></A>(<SPAN CLASS="Argument">s</SPAN>)</SPAN><SPAN CLASS="OneLiner"> # Get the nick part of a nickmask.</SPAN>
+<SPAN CLASS="FunctionHead"><A CLASS="DocLink" HREF="#nm_to_u"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">nm_to_u</SPAN></A>(<SPAN CLASS="Argument">s</SPAN>)</SPAN><SPAN CLASS="OneLiner"> # Get the user part of a nickmask.</SPAN>
+<SPAN CLASS="FunctionHead"><A CLASS="DocLink" HREF="#nm_to_uh"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">nm_to_uh</SPAN></A>(<SPAN CLASS="Argument">s</SPAN>)</SPAN><SPAN CLASS="OneLiner"> # Get the userhost part of a nickmask.</SPAN>
+<SPAN CLASS="FunctionHead"><A CLASS="DocLink" HREF="#parse_channel_modes"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">parse_channel_modes</SPAN></A>(<SPAN CLASS="Argument">mode_string</SPAN>)</SPAN><SPAN CLASS="OneLiner"> # Parse a channel mode string.</SPAN>
+<SPAN CLASS="FunctionHead"><A CLASS="DocLink" HREF="#parse_nick_modes"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">parse_nick_modes</SPAN></A>(<SPAN CLASS="Argument">mode_string</SPAN>)</SPAN><SPAN CLASS="OneLiner"> # Parse a nick mode string.</SPAN>
+<SPAN CLASS="VariableHead"><SPAN CLASS="VariableType">int</SPAN> <SPAN CLASS="VariableName">DEBUG</SPAN> = <SPAN CLASS="VariableValue">0</SPAN></SPAN>
+<SPAN CLASS="VariableHead"><SPAN CLASS="VariableType">tuple</SPAN> <SPAN CLASS="VariableName">VERSION</SPAN> = <SPAN CLASS="VariableValue">(0, 3, 1)</SPAN></SPAN>
+<SPAN CLASS="VariableHead"><SPAN CLASS="VariableType">string</SPAN> <SPAN CLASS="VariableName">_CTCP_DELIMITER</SPAN> = <SPAN CLASS="VariableValue">'\001'</SPAN></SPAN>
+<SPAN CLASS="VariableHead"><SPAN CLASS="VariableType">string</SPAN> <SPAN CLASS="VariableName">_CTCP_LEVEL_QUOTE</SPAN> = <SPAN CLASS="VariableValue">'\\'</SPAN></SPAN>
+<SPAN CLASS="VariableHead"><SPAN CLASS="VariableType">string</SPAN> <SPAN CLASS="VariableName">_LOW_LEVEL_QUOTE</SPAN> = <SPAN CLASS="VariableValue">'\020'</SPAN></SPAN>
+<SPAN CLASS="VariableHead"><SPAN CLASS="VariableType">string</SPAN> <SPAN CLASS="VariableName">__file__</SPAN> = <SPAN CLASS="VariableValue">'./irclib.py'</SPAN></SPAN>
+<SPAN CLASS="VariableHead"><SPAN CLASS="VariableType">string</SPAN> <SPAN CLASS="VariableName">_alpha</SPAN> = <SPAN CLASS="VariableValue">'abcdefghijklmnopqrstuvxyz'</SPAN></SPAN>
+<SPAN CLASS="VariableHead"><SPAN CLASS="VariableType">string</SPAN> <SPAN CLASS="VariableName">_ircstring_translation</SPAN> = <SPAN CLASS="VariableValue">'\000\001\002\003\004\005\00...\371\372\373\374\375\376\377'</SPAN></SPAN>
+<SPAN CLASS="VariableHead"><SPAN CLASS="VariableType">instance</SPAN> <SPAN CLASS="VariableName">_linesep_regexp</SPAN> = <SPAN CLASS="VariableValue">re.RegexObject instance</SPAN></SPAN>
+<SPAN CLASS="VariableHead"><SPAN CLASS="VariableType">dictionary</SPAN> <SPAN CLASS="VariableName">_low_level_mapping</SPAN> = <SPAN CLASS="VariableValue">{'\020': '\020', '0': '\000', 'n': '\012', 'r': '\015'}</SPAN></SPAN>
+<SPAN CLASS="VariableHead"><SPAN CLASS="VariableType">instance</SPAN> <SPAN CLASS="VariableName">_low_level_regexp</SPAN> = <SPAN CLASS="VariableValue">re.RegexObject instance</SPAN></SPAN>
+<SPAN CLASS="VariableHead"><SPAN CLASS="VariableType">instance</SPAN> <SPAN CLASS="VariableName">_rfc_1459_command_regexp</SPAN> = <SPAN CLASS="VariableValue">re.RegexObject instance</SPAN></SPAN>
+<SPAN CLASS="VariableHead"><SPAN CLASS="VariableType">string</SPAN> <SPAN CLASS="VariableName">_special</SPAN> = <SPAN CLASS="VariableValue">'-[]\\`^{}'</SPAN></SPAN>
+<SPAN CLASS="VariableHead"><SPAN CLASS="VariableType">list</SPAN> <SPAN CLASS="VariableName">all_events</SPAN> = <SPAN CLASS="VariableValue">['disconnect', 'ctcp', 'ctcpreply', 'error', 'join', 'kick', ...]</SPAN></SPAN>
+<SPAN CLASS="VariableHead"><SPAN CLASS="VariableType">list</SPAN> <SPAN CLASS="VariableName">generated_events</SPAN> = <SPAN CLASS="VariableValue">['disconnect', 'ctcp', 'ctcpreply']</SPAN></SPAN>
+<SPAN CLASS="VariableHead"><SPAN CLASS="VariableType">string</SPAN> <SPAN CLASS="VariableName">nick_characters</SPAN> = <SPAN CLASS="VariableValue">'abcdefghijklmnopqrstuvxyzAB...QRSTUVXYZ0123456789-[]\\`^{}'</SPAN></SPAN>
+<SPAN CLASS="VariableHead"><SPAN CLASS="VariableType">dictionary</SPAN> <SPAN CLASS="VariableName">numeric_events</SPAN> = <SPAN CLASS="VariableValue">{'001': 'welcome', '002': 'yourhost', '003': 'created', '004': 'myinfo', ...}</SPAN></SPAN>
+<SPAN CLASS="VariableHead"><SPAN CLASS="VariableType">list</SPAN> <SPAN CLASS="VariableName">protocol_events</SPAN> = <SPAN CLASS="VariableValue">['error', 'join', 'kick', 'mode', 'part', 'ping', ...]</SPAN></SPAN>
+</PRE><H2>Description</H2><P>
+This library is intended to encapsulate the IRC protocol at a quite
+low level.  It provides an event-driven IRC client framework.  It has
+a fairly thorough support for the basic IRC protocol and CTCP, but DCC
+connection support is not yet implemented.</P>
+<P>
+In order to understand how to make an IRC client, I'm afraid you more
+or less must understand the IRC specifications.  They are available
+here: <A HREF="http://www.irchelp.org/irchelp/rfc/">IRC specifications</A>.</P>
+
+<H3>The main features of the IRC client framework are:</H3>
+
+<UL>
+
+<LI>Abstraction of the IRC protocol.
+
+<LI>Handles multiple simultaneous IRC server connections.
+
+<LI>Handles server PONGing transparently.
+
+<LI>Messages to the IRC server are done by calling methods on an IRC
+    connection object.
+
+<LI>Messages from an IRC server triggers events, which can be caught
+    by event handlers.
+
+<LI>Reading from and writing to IRC server sockets are normally done
+    by an internal select() loop, but the select()ing may be done by
+    an external main loop.
+
+<LI>Functions can be registered to execute at specified times by the
+    event-loop.
+
+<LI>Decodes CTCP tagging correctly (hopefully); I haven't seen any
+    other IRC client implementation that handles the CTCP
+    specification subtilties.
+
+<LI>A kind of simple, single-server, object-oriented IRC client class
+    that dispatches events to instance methods is included.
+</UL>
+
+<H3>Current limitations:</H3>
+
+<UL>
+
+<LI>The IRC protocol shines through the abstraction a bit too much.
+
+<LI>Data is not written asynchronously to the server, i.e. the write()
+    may block if the TCP buffers are stuffed.
+
+<LI>There are no support for DCC connections.
+
+<LI>The author haven't even read RFC 2810, 2811, 2812 and 2813.
+
+<LI>Like most projects, documentation is lacking...
+</UL>
+Since I seldom use IRC anymore, I will probably not work much on the
+library.  If you want to help or continue developing the library,
+please contact me (Joel Rosdahl &lt;joel@rosdahl.net&gt;).<H2 ID="X_ctcp_dequote" CLASS="Function">_ctcp_dequote(<A HREF="#irclib._ctcp_dequotemessage"><SPAN CLASS="Argument">message</SPAN></A>)</H2>
+<P>[Internal] Dequote a message according to CTCP specifications.</P>
+
+The function returns a list where each element can be either a
+string (normal message) or a tuple of one or two strings (tagged
+messages).  If a tuple has only one element (ie is a singleton),
+that element is the tag; otherwise the tuple has two elements: the
+tag and the data.<H2 ID="irc_lower" CLASS="Function">irc_lower(<SPAN CLASS="Argument">s</SPAN>)</H2>
+<P>Returns a lowercased string.</P>
+
+The definition of lowercased comes from the IRC specification (RFC
+1459).
+<H2 ID="is_channel" CLASS="Function">is_channel(<SPAN CLASS="Argument">string</SPAN>)</H2>
+<P>Check if a string is a channel name.</P>
+
+Returns true if the argument is a channel name, otherwise false.
+<H2 ID="mask_matches" CLASS="Function">mask_matches(<SPAN CLASS="Argument">nick</SPAN>, <SPAN CLASS="Argument">mask</SPAN>)</H2>
+<P>Check if a nick matches a mask.</P>
+
+Returns true if the nick matches, otherwise false.
+<H2 ID="nm_to_h" CLASS="Function">nm_to_h(<SPAN CLASS="Argument">s</SPAN>)</H2>
+<P>Get the host part of a nickmask.</P>
+
+(The source of an Event is a nickmask.)
+<H2 ID="nm_to_n" CLASS="Function">nm_to_n(<SPAN CLASS="Argument">s</SPAN>)</H2>
+<P>Get the nick part of a nickmask.</P>
+
+(The source of an Event is a nickmask.)
+<H2 ID="nm_to_u" CLASS="Function">nm_to_u(<SPAN CLASS="Argument">s</SPAN>)</H2>
+<P>Get the user part of a nickmask.</P>
+
+(The source of an Event is a nickmask.)
+<H2 ID="nm_to_uh" CLASS="Function">nm_to_uh(<SPAN CLASS="Argument">s</SPAN>)</H2>
+<P>Get the userhost part of a nickmask.</P>
+
+(The source of an Event is a nickmask.)
+<H2 ID="parse_channel_modes" CLASS="Function">parse_channel_modes(<SPAN CLASS="Argument">mode_string</SPAN>)</H2>
+<P>Parse a channel mode string.</P>
+
+The function returns a list of lists with three members: sign,
+mode and argument.  The sign is "+" or "-".  The argument is
+None if mode isn't one of "b", "k", "l", "v" or "o".Example:<PRE>&gt;&gt;&gt; irclib.parse_channel_modes("+ab-c foo")
+[['+', 'a', None], ['+', 'b', 'foo'], ['-', 'c', None]]
+</PRE><H2 ID="parse_nick_modes" CLASS="Function">parse_nick_modes(<SPAN CLASS="Argument">mode_string</SPAN>)</H2>
+<P>Parse a nick mode string.</P>
+
+<P>
+The function returns a list of lists with three members: sign,
+mode and argument.  The sign is "+" or "-".  The argument is
+always None.</P>
+<P>
+Example:</P>
+<PRE>&gt;&gt;&gt; irclib.parse_nick_modes("+ab-c")
+[['+', 'a', None], ['+', 'b', None], ['-', 'c', None]]
+</PRE>
+<HR>
+<TABLE ALIGN="LEFT">
+<TR><TD>
+  <A HREF="http://validator.w3.org/check/referer" TARGET="validate">
+    <IMG BORDER=0 SRC="http://validator.w3.org/images/vh40.gif"
+     ALT="Valid HTML 4.0!" HEIGHT=31 WIDTH=88></A>
+  <A HREF="http://www.w3.org/Style/CSS/Buttons">
+    <IMG ALT="Made with CSS" BORDER=0 WIDTH=88 HEIGHT=31 
+     SRC="http://www.w3.org/Style/CSS/Buttons/mwcos"></A>
+
+</TD>
+<TD STYLE="padding-left: 10">
+  <SPAN CLASS="AUTHOR"></SPAN><BR>
+  <SPAN CLASS="VERSION"></SPAN>
+</TD>
+</TABLE>
+
+</body>
+</html>

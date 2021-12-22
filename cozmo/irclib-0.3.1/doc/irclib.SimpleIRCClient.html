@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+
+<head>
+
+<META NAME="GENERATOR" CONTENT="pythondoc 0.6 (Mon Dec 11 15:50:05 2000)">
+
+<link rel="stylesheet" href="pythondoc.css" type="text/css">
+
+<title>Class SimpleIRCClient</title>
+</head>
+
+<body>
+<P><A HREF="index.html">Table of contents</A> <A HREF="indices.html">Index</A></P>
+
+
+<H1 CLASS="ClassName">class SimpleIRCClient - A simple single-server IRC client class.</H1>
+<P CLASS="DeclaredIn">Declared in module <A HREF="irclib.html">irclib</A></P>
+
+
+
+<H2>Synopsis</H2>
+<PRE CLASS="ClassDeclaration">
+<SPAN CLASS="PyKeyword">class</SPAN> <SPAN CLASS="ClassName">SimpleIRCClient</SPAN>:
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">__init__</SPAN>(<SPAN CLASS="Argument">self</SPAN>)
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">_dispatcher</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">c</SPAN>, <SPAN CLASS="Argument">e</SPAN>)<SPAN CLASS="OneLiner"> # [Internal]</SPAN>
+    <A CLASS="DocLink" HREF="#connect"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">connect</SPAN></A>(<SPAN CLASS="Argument">self</SPAN>, <A HREF="#irclib.SimpleIRCClient.connectserver"><SPAN CLASS="Argument">server</SPAN></A>, <A HREF="#irclib.SimpleIRCClient.connectport"><SPAN CLASS="Argument">port</SPAN></A>, <A HREF="#irclib.SimpleIRCClient.connectnickname"><SPAN CLASS="Argument">nickname</SPAN></A>, <A HREF="#irclib.SimpleIRCClient.connectpasswordNone"><SPAN CLASS="Argument">password=None</SPAN></A>, <A HREF="#irclib.SimpleIRCClient.connectusernameNone"><SPAN CLASS="Argument">username=None</SPAN></A>, <A HREF="#irclib.SimpleIRCClient.connectircnameNone"><SPAN CLASS="Argument">ircname=None</SPAN></A>)<SPAN CLASS="OneLiner"> # Connect/reconnect to a server.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">start</SPAN>(<SPAN CLASS="Argument">self</SPAN>)<SPAN CLASS="OneLiner"> # Start the IRC client.</SPAN>
+
+</PRE><H2>Description</H2><P>
+This is an example of an object-oriented wrapper of the IRC
+framework.  A real IRC client can be made by subclassing this
+class and adding appropriate methods.</P>
+<P>
+The method on_join will be called when a "join" event is created
+(which is done when the server sends a JOIN messsage/command),
+on_privmsg will be called for "privmsg" events, and so on.  The
+handler methods get two arguments: the connection object (same as
+self.connection) and the event object.</P>
+
+<H3>Instance attributes that can be used by sub classes:</H3>
+
+<DL>
+
+<DT>
+ircobj
+<DD>The IRC instance.
+<DT>
+connection
+<DD>The ServerConnection instance.
+
+</DL>
+<H2 ID="connect" CLASS="Method">connect(<SPAN CLASS="Argument">self</SPAN>, <A HREF="#irclib.SimpleIRCClient.connectserver"><SPAN CLASS="Argument">server</SPAN></A>, <A HREF="#irclib.SimpleIRCClient.connectport"><SPAN CLASS="Argument">port</SPAN></A>, <A HREF="#irclib.SimpleIRCClient.connectnickname"><SPAN CLASS="Argument">nickname</SPAN></A>, <A HREF="#irclib.SimpleIRCClient.connectpasswordNone"><SPAN CLASS="Argument">password=None</SPAN></A>, <A HREF="#irclib.SimpleIRCClient.connectusernameNone"><SPAN CLASS="Argument">username=None</SPAN></A>, <A HREF="#irclib.SimpleIRCClient.connectircnameNone"><SPAN CLASS="Argument">ircname=None</SPAN></A>)</H2>
+<P>Connect/reconnect to a server.</P>
+
+<DL CLASS="Arguments">
+  <DT CLASS="Argument" ID="irclib.SimpleIRCClient.connectserver"><SPAN CLASS="Argument">server</SPAN></DT><DD CLASS="Argument">Server name.</DD>
+<DT CLASS="Argument" ID="irclib.SimpleIRCClient.connectport"><SPAN CLASS="Argument">port</SPAN></DT><DD CLASS="Argument">Port number.</DD>
+<DT CLASS="Argument" ID="irclib.SimpleIRCClient.connectnickname"><SPAN CLASS="Argument">nickname</SPAN></DT><DD CLASS="Argument">The nickname.</DD>
+<DT CLASS="Argument" ID="irclib.SimpleIRCClient.connectpasswordNone"><SPAN CLASS="Argument">password=None</SPAN></DT><DD CLASS="Argument">Password (if any).</DD>
+<DT CLASS="Argument" ID="irclib.SimpleIRCClient.connectusernameNone"><SPAN CLASS="Argument">username=None</SPAN></DT><DD CLASS="Argument">The username.</DD>
+<DT CLASS="Argument" ID="irclib.SimpleIRCClient.connectircnameNone"><SPAN CLASS="Argument">ircname=None</SPAN></DT><DD CLASS="Argument">The IRC name.</DD>
+
+</DL>
+This function can be called to reconnect a closed connection.
+
+<HR>
+<TABLE ALIGN="LEFT">
+<TR><TD>
+  <A HREF="http://validator.w3.org/check/referer" TARGET="validate">
+    <IMG BORDER=0 SRC="http://validator.w3.org/images/vh40.gif"
+     ALT="Valid HTML 4.0!" HEIGHT=31 WIDTH=88></A>
+  <A HREF="http://www.w3.org/Style/CSS/Buttons">
+    <IMG ALT="Made with CSS" BORDER=0 WIDTH=88 HEIGHT=31 
+     SRC="http://www.w3.org/Style/CSS/Buttons/mwcos"></A>
+
+</TD>
+<TD STYLE="padding-left: 10">
+  <SPAN CLASS="AUTHOR"></SPAN><BR>
+  <SPAN CLASS="VERSION"></SPAN>
+</TD>
+</TABLE>
+
+</body>
+</html>

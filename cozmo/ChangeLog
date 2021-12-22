@@ -1,0 +1,6 @@
+ChangeLog
+--------
+	benzo 0.3 10/31/2001 bugfix release
+		- made python2 fixes
+		- some windows portability fixes
+	

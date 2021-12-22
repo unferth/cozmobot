@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+
+<head>
+
+<META NAME="GENERATOR" CONTENT="pythondoc 0.6 (Mon Dec 11 15:50:05 2000)">
+
+<link rel="stylesheet" href="pythondoc.css" type="text/css">
+
+<title>Class Channel</title>
+</head>
+
+<body>
+<P><A HREF="index.html">Table of contents</A> <A HREF="indices.html">Index</A></P>
+
+
+<H1 CLASS="ClassName">class Channel - A class for keeping information about an IRC channel.</H1>
+<P CLASS="DeclaredIn">Declared in module <A HREF="ircbot.html">ircbot</A></P>
+
+
+
+<H2>Synopsis</H2>
+<PRE CLASS="ClassDeclaration">
+<SPAN CLASS="PyKeyword">class</SPAN> <SPAN CLASS="ClassName">Channel</SPAN>:
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">__init__</SPAN>(<SPAN CLASS="Argument">self</SPAN>)
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">add_user</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">nick</SPAN>)
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">change_nick</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">before</SPAN>, <SPAN CLASS="Argument">after</SPAN>)
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">clear_mode</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <A HREF="#ircbot.Channel.clear_modemode"><SPAN CLASS="Argument">mode</SPAN></A>, <A HREF="#ircbot.Channel.clear_modevalueNone"><SPAN CLASS="Argument">value=None</SPAN></A>)<SPAN CLASS="OneLiner"> # Clear mode on the channel.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">has_key</SPAN>(<SPAN CLASS="Argument">self</SPAN>)
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">has_limit</SPAN>(<SPAN CLASS="Argument">self</SPAN>)
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">has_message_from_outside_protection</SPAN>(<SPAN CLASS="Argument">self</SPAN>)
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">has_mode</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">mode</SPAN>)
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">has_topic_lock</SPAN>(<SPAN CLASS="Argument">self</SPAN>)
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">has_user</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">nick</SPAN>)<SPAN CLASS="OneLiner"> # Check whether the channel has a user.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">is_invite_only</SPAN>(<SPAN CLASS="Argument">self</SPAN>)
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">is_moderated</SPAN>(<SPAN CLASS="Argument">self</SPAN>)
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">is_oper</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">nick</SPAN>)<SPAN CLASS="OneLiner"> # Check whether a user has operator status in the channel.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">is_protected</SPAN>(<SPAN CLASS="Argument">self</SPAN>)
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">is_secret</SPAN>(<SPAN CLASS="Argument">self</SPAN>)
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">is_voiced</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">nick</SPAN>)<SPAN CLASS="OneLiner"> # Check whether a user has voice mode set in the channel.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">key</SPAN>(<SPAN CLASS="Argument">self</SPAN>)
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">limit</SPAN>(<SPAN CLASS="Argument">self</SPAN>)
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">opers</SPAN>(<SPAN CLASS="Argument">self</SPAN>)<SPAN CLASS="OneLiner"> # Returns an unsorted list of the channel's operators.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">remove_user</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <SPAN CLASS="Argument">nick</SPAN>)
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">set_mode</SPAN>(<SPAN CLASS="Argument">self</SPAN>, <A HREF="#ircbot.Channel.set_modemode"><SPAN CLASS="Argument">mode</SPAN></A>, <A HREF="#ircbot.Channel.set_modevalueNone"><SPAN CLASS="Argument">value=None</SPAN></A>)<SPAN CLASS="OneLiner"> # Set mode on the channel.</SPAN>
+    <SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">users</SPAN>(<SPAN CLASS="Argument">self</SPAN>)<SPAN CLASS="OneLiner"> # Returns an unsorted list of the channel's users.</SPAN>
+    <A CLASS="DocLink" HREF="#voiced"><SPAN CLASS="PyKeyword">def</SPAN> <SPAN CLASS="FunctionName">voiced</SPAN></A>(<SPAN CLASS="Argument">self</SPAN>)
+
+</PRE><H2>Description</H2><P>
+This class can be improved a lot.
+</P>
+<H2 ID="voiced" CLASS="Method">voiced(<SPAN CLASS="Argument">self</SPAN>)</H2>
+<P>None</P>
+
+<P>
+Returns an unsorted list of the persons that have voice
+mode set in the channel.</P>
+
+<HR>
+<TABLE ALIGN="LEFT">
+<TR><TD>
+  <A HREF="http://validator.w3.org/check/referer" TARGET="validate">
+    <IMG BORDER=0 SRC="http://validator.w3.org/images/vh40.gif"
+     ALT="Valid HTML 4.0!" HEIGHT=31 WIDTH=88></A>
+  <A HREF="http://www.w3.org/Style/CSS/Buttons">
+    <IMG ALT="Made with CSS" BORDER=0 WIDTH=88 HEIGHT=31 
+     SRC="http://www.w3.org/Style/CSS/Buttons/mwcos"></A>
+
+</TD>
+<TD STYLE="padding-left: 10">
+  <SPAN CLASS="AUTHOR"></SPAN><BR>
+  <SPAN CLASS="VERSION"></SPAN>
+</TD>
+</TABLE>
+
+</body>
+</html>
